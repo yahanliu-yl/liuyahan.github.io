@@ -1,48 +1,239 @@
 <!DOCTYPE html>
-<html lang="zh">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>刘雅涵 | 个人主页</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>YAHAN LIU | PORTFOLIO</title>
     <style>
-        body { font-family: 'Helvetica Neue', Arial, sans-serif; line-height: 1.6; color: #333; margin: 0; padding: 0; background-color: #f9f9f9; }
-        header { background: #fff; padding: 60px 20px; text-align: center; border-bottom: 1px solid #eee; }
-        .container { max-width: 800px; margin: 40px auto; padding: 0 20px; }
-        h1 { font-size: 2.5em; color: #2c3e50; margin-bottom: 10px; }
-        .tagline { color: #7f8c8d; font-size: 1.2em; }
-        section { margin-bottom: 40px; }
-        h2 { border-left: 4px solid #3498db; padding-left: 15px; color: #2c3e50; }
-        .card { background: #fff; padding: 20px; border-radius: 8px; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
-        footer { text-align: center; padding: 40px; color: #bdc3c7; font-size: 0.9em; }
+        /* --- Y2K STYLE CONFIG --- */
+        :root {
+            --bg-color: rgba(240, 240, 240, 0.9); 
+            --text-color: #333333;
+            --border-color: #888888;
+        }
+
+        body {
+            /* 修正：这里改成了大写的 .JPG 以匹配你的文件名 */
+            background-image: url('BG.JPG');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            
+            color: var(--text-color);
+            font-family: 'Courier New', Courier, monospace;
+            margin: 0;
+            padding: 20px;
+            line-height: 1.4;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 40px auto;
+            border: 2px solid var(--border-color);
+            background: var(--bg-color);
+            box-shadow: 8px 8px 0px rgba(0,0,0,0.25);
+        }
+
+        header {
+            border-bottom: 2px solid var(--border-color);
+            padding: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            background: #e8e8e8;
+        }
+
+        h1 {
+            font-size: 1.8rem;
+            margin: 0;
+            text-transform: uppercase;
+            letter-spacing: -1px;
+            font-weight: bold;
+        }
+
+        .bio-box {
+            font-size: 0.8rem;
+            border: 1px solid var(--border-color);
+            padding: 8px;
+            background: #fff;
+            box-shadow: 2px 2px 0px #ccc;
+        }
+
+        .ticker-wrap {
+            border-bottom: 2px solid var(--border-color);
+            background: #000;
+            color: #fff;
+            padding: 6px 0;
+            font-size: 0.8rem;
+            white-space: nowrap;
+            overflow: hidden;
+        }
+        .ticker {
+            display: inline-block;
+            animation: ticker 15s infinite linear;
+            padding-left: 100%;
+        }
+        @keyframes ticker {
+            0% { transform: translate3d(0, 0, 0); }
+            100% { transform: translate3d(-100%, 0, 0); }
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 0;
+        }
+
+        .item {
+            border-right: 1px solid var(--border-color);
+            border-bottom: 1px solid var(--border-color);
+            padding: 15px;
+            background: transparent;
+            transition: all 0.2s;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .item:hover {
+            background: #ffffff;
+            cursor: crosshair;
+            box-shadow: inset 0 0 10px rgba(0,0,0,0.1);
+        }
+
+        .img-wrapper {
+            width: 100%;
+            height: 250px;
+            overflow: hidden;
+            border: 1px solid #999;
+            margin-bottom: 10px;
+            background: #000;
+        }
+
+        .item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            filter: grayscale(30%);
+            transition: filter 0.3s, transform 0.3s;
+        }
+
+        .item:hover img {
+            filter: grayscale(0%);
+            transform: scale(1.05);
+        }
+
+        .meta {
+            margin-top: auto;
+            font-size: 0.75rem;
+            display: flex;
+            justify-content: space-between;
+            font-weight: bold;
+            color: #555;
+        }
+
+        footer {
+            padding: 30px;
+            text-align: center;
+            font-size: 0.8rem;
+            color: #666;
+            border-top: 2px solid var(--border-color);
+            background: #e8e8e8;
+        }
+
+        a { color: #000; text-decoration: underline; }
+        a:hover { background: #000; color: #fff; text-decoration: none; }
     </style>
 </head>
 <body>
 
-<header>
-    <h1>刘雅涵 (Yahan Liu)</h1>
-    <p class="tagline">保持好奇，奔赴热爱 | 终身学习者 & [在此输入职业]</p>
-</header>
-
 <div class="container">
-    <section id="about">
-        <h2>关于我</h2>
-        <div class="card">
-            <p>你好！我是雅涵。我热衷于[描述一个你的热情点，比如：通过技术解决问题/创作有温度的内容]。</p>
-            <p>目前我正致力于[目前的项目或研究方向]，并在[城市]生活。</p>
+    <header>
+        <div>
+            <h1>Yahan Liu</h1>
+            <p style="margin-top:5px; font-size:0.9rem;">/// VISUAL ARTIST ///</p>
         </div>
-    </section>
+        <div class="bio-box">
+            BORN: 2006, BJ<br>
+            BASE: ANN ARBOR<br>
+            STATUS: ONLINE
+        </div>
+    </header>
 
-    <section id="contact">
-        <h2>建立联系</h2>
-        <div class="card">
-            <p>📧 邮箱：yahan.liu@example.com</p>
-            <p>🔗 社交平台：[微信 / 小红书 / LinkedIn]</p>
+    <div class="ticker-wrap">
+        <div class="ticker">
+            *** WELCOME TO THE ARCHIVE *** YAHAN LIU *** VISUAL ARTS / MIXED MEDIA *** SCROLL TO VIEW ***
         </div>
-    </section>
+    </div>
+
+    <div class="grid">
+        <div class="item">
+            <div class="img-wrapper">
+                <img src="Photo1.JPG" alt="Body Series">
+            </div>
+            <div class="meta">
+                <span>01. HEALING PROCESS</span>
+                <span>PHOTO</span>
+            </div>
+        </div>
+
+        <div class="item">
+            <div class="img-wrapper">
+                <img src="photo2.JPG" alt="Portrait">
+            </div>
+            <div class="meta">
+                <span>02. IDENTITY PLAY</span>
+                <span>PERFORMANCE</span>
+            </div>
+        </div>
+
+        <div class="item">
+            <div class="img-wrapper">
+                <img src="photo_3.JPG" alt="Sculpture">
+            </div>
+            <div class="meta">
+                <span>03. ORGANIC FORM</span>
+                <span>INSTALLATION</span>
+            </div>
+        </div>
+
+        <div class="item">
+            <div class="img-wrapper">
+                <img src="photo_4.jpg" alt="Fabric Art">
+            </div>
+            <div class="meta">
+                <span>04. DISTORTION</span>
+                <span>DIGITAL</span>
+            </div>
+        </div>
+
+        <div class="item">
+            <div class="img-wrapper">
+                <img src="Photo_5.jpg" alt="Glitch Lace">
+            </div>
+            <div class="meta">
+                <span>05. TEXTURE GLITCH</span>
+                <span>MIXED</span>
+            </div>
+        </div>
+
+        <div class="item">
+            <div class="img-wrapper">
+                <img src="photo_6.jpg" alt="Collage">
+            </div>
+            <div class="meta">
+                <span>06. FUTURE OF HUMAN?</span>
+                <span>COLLAGE</span>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <p>CONTACT: YAHANLIU [AT] UMICH.EDU</p>
+        <p>© 2026 YAHAN LIU. ALL RIGHTS RESERVED.</p>
+        <br>
+        <a href="#">INSTAGRAM</a>
+    </footer>
 </div>
-
-<footer>
-    © 2026 刘雅涵 版权所有
-</footer>
 
 </body>
 </html>
