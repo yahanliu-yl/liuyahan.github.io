@@ -5,186 +5,81 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
     <link rel="icon" href="icon.png" type="image/png">
-    <title>YAHAN LIU | IDEAS</title>
+    <title>YAHAN LIU | WORKS</title>
 
     <style>
-        /* --- IDEAS 专用样式 --- */
-        body { overflow-y: auto !important; overflow-x: hidden; }
-        .sky-container {
-            position: relative; 
-            width: 100%; 
-            height: 300vh; /* 总高度依然是3屏，为了最后那1屏的留白 */
-            overflow: hidden; 
+        /* --- WORKS 页面专用样式 --- */
+        body {
+            /* 记得把 works.jpg 换成你原本的背景图文件名，如果名字不对就改这里 */
+            background-image: url('works.jpg'); 
+            background-size: cover; background-position: center; background-attachment: fixed;
         }
 
-        .cloud-card {
-            position: absolute;
-            background: rgba(255, 255, 255, 0.75);
-            backdrop-filter: blur(8px);
-            padding: 25px 35px;
-            width: auto; max-width: 320px; min-width: 150px;
-            color: #333;
-            transition: all 0.4s ease;
-            cursor: zoom-in;
-            z-index: 10;
-            box-shadow: 8px 8px 20px rgba(0,0,0,0.05);
-            text-align: center; 
+        .container {
+            max-width: 1000px;
+            margin: 100px auto 50px; /* 避开导航栏 */
+            padding: 20px;
+            animation: pageFadeIn 0.8s ease-out;
         }
 
-        .cloud-card:hover {
-            transform: scale(1.05) translateY(-5px);
-            background: rgba(255, 255, 255, 0.95);
-            z-index: 20;
-            box-shadow: 10px 15px 30px rgba(0,0,0,0.1);
+        /* 简单的作品网格 */
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 20px;
         }
 
-        .cloud-title {
-            font-weight: bold; margin-bottom: 8px; font-size: 1rem;
-            border-bottom: 1px dashed #aaa; padding-bottom: 5px;
-            display: inline-block;
+        .item {
+            background: rgba(255, 255, 255, 0.9);
+            border: 1px solid #000;
+            padding: 10px;
+            transition: 0.3s;
         }
-        .cloud-content { font-size: 0.85rem; line-height: 1.5; }
+        .item:hover { transform: translateY(-5px); box-shadow: 5px 5px 0px rgba(0,0,0,0.5); }
 
-        /* 点击放大 */
-        .cloud-card.expanded {
-            position: fixed !important; top: 50% !important; left: 50% !important;
-            transform: translate(-50%, -50%) scale(1.3) !important;
-            z-index: 9999 !important; border-radius: 20px !important; 
-            width: auto !important; max-width: 90% !important; min-width: 320px;
-            background: #fff !important; box-shadow: 0 0 100px rgba(0,0,0,0.3);
-            cursor: zoom-out; padding: 40px; text-align: left;
+        .img-wrapper {
+            width: 100%; height: 200px; background: #000; overflow: hidden; margin-bottom: 10px;
         }
+        .img-wrapper img { width: 100%; height: 100%; object-fit: cover; }
 
-        #overlay {
-            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-            background: rgba(0, 0, 0, 0.7); z-index: 9990; opacity: 0; pointer-events: none; transition: opacity 0.3s;
-        }
-        #overlay.active { opacity: 1; pointer-events: auto; }
+        .meta { font-size: 0.8rem; font-weight: bold; display: flex; justify-content: space-between; }
+
+        footer { text-align: center; font-size: 0.7rem; color: #888; padding: 40px; }
     </style>
 </head>
 
-<body style="background-image: url('ideas.jpg'); background-size: cover; background-position: center; background-attachment: fixed;">
-
-<div id="overlay"></div>
+<body>
 
 <nav>
     <a href="index.html">HOME</a>
-    <a href="works.html">WORKS</a>
-    <a href="ideas.html" class="active">IDEAS</a>
+    <a href="works.html" class="active">WORKS</a> <a href="ideas.html">IDEAS</a>
     <a href="others.html">OTHERS</a>
 </nav>
 
-<div class="sky-container">
-
-    <div class="cloud-card" 
-         style="top: 10%; left: 20%; 
-                border-radius: 53% 47% 52% 48% / 60% 42% 58% 40%;" 
-         onclick="toggleExpand(this)">
-        <div class="cloud-title">🎧 Loop Songs</div>
-        <div class="cloud-content" style="text-align: left;">
-            1. Babydoll (Dominic Fike) <br>
-            2. Pink Pony Club<br>
-            3. Chosen (Blood Orange) <br>
-            4. After Hours<br>
-            <br>
-            <em style="font-size:0.7rem">*Music creates the space.*</em>
-        </div>
+<div class="container">
+    <div class="grid">
+        <a href="#" class="item">
+            <div class="img-wrapper"><img src="work1.jpg" alt="Work 1"></div>
+            <div class="meta"><span>Project A</span><span>2024</span></div>
+        </a>
+        <a href="#" class="item">
+            <div class="img-wrapper"><img src="work2.jpg" alt="Work 2"></div>
+            <div class="meta"><span>Project B</span><span>2025</span></div>
+        </a>
+        <a href="#" class="item">
+            <div class="img-wrapper"><img src="work3.jpg" alt="Work 3"></div>
+            <div class="meta"><span>Project C</span><span>2025</span></div>
+        </a>
+        <a href="#" class="item">
+            <div class="img-wrapper"><img src="work4.jpg" alt="Work 4"></div>
+            <div class="meta"><span>Drafts</span><span>...</span></div>
+        </a>
     </div>
-
-    <div class="cloud-card" 
-         style="top: 35%; left: 58%; 
-                border-radius: 35% 65% 63% 37% / 46% 36% 64% 54%;" 
-         onclick="toggleExpand(this)">
-        <div class="cloud-title">👀 Eyes On</div>
-        <div class="cloud-content">
-            Jennie-like Jennie<br>
-            Chappell Roan<br>
-            Pipilotti Rist<br>
-            NYFW & Friends
-        </div>
-    </div>
-
-    <div class="cloud-card" 
-         style="top: 60%; left: 22%; width: 100px; 
-                border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;" 
-         onclick="toggleExpand(this)">
-        <div style="font-size: 2.5rem;">🐟</div>
-        <div class="cloud-content" style="font-size: 0.7rem;">Swimming...</div>
-    </div>
-
-    <div class="cloud-card" 
-         style="top: 85%; left: 55%; 
-                width: auto; max-width: 400px; 
-                transform: rotate(-3deg);
-                border-radius: 25% 75% 38% 62% / 54% 39% 61% 46%;" 
-         onclick="toggleExpand(this)">
-        <div class="cloud-title">📓 Dear Diary...</div>
-        <div class="cloud-content" style="text-align: left; line-height: 1.6;">
-            <p><strong>Feb 04, 2026</strong></p>
-            <p>Just set up my new website archive.</p>
-            <p>Space reserved for messy drafts...</p>
-            <br>
-            <em>...writing...</em>
-        </div>
-    </div>
-
-    <div class="cloud-card" 
-         style="top: 115%; left: 25%; 
-                border-radius: 73% 27% 59% 41% / 57% 65% 35% 43%;" 
-         onclick="toggleExpand(this)">
-        <div class="cloud-title">🍳 Mood</div>
-        <div class="cloud-content">
-            Tired of Kpop.<br>
-            Low saturation.<br>
-            Fried eggs on a Sunday.
-        </div>
-    </div>
-
-    <div class="cloud-card" 
-         style="top: 140%; left: 60%; 
-                border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;" 
-         onclick="toggleExpand(this)">
-        <div class="cloud-title">📈 Obsession</div>
-        <div class="cloud-content">
-            Internships <br>
-            240p texture.<br>
-            Transparent electronics.
-        </div>
-    </div>
-
-    <div class="cloud-card" 
-         style="top: 170%; left: 40%; 
-                background: rgba(255,255,255,0.9); border: 2px dashed #333;
-                border-radius: 68% 32% 56% 44% / 39% 32% 68% 61%;" 
-         onclick="toggleExpand(this)">
-        <div class="cloud-title">🤝 Dream Collab?</div>
-        <div class="cloud-content">
-            Yechan Shin!! <br>
-            Music Artists <br>
-            <br>
-            <strong>DM me ^^</strong>
-        </div>
-    </div>
-
 </div>
 
-<script>
-    function toggleExpand(card) {
-        const overlay = document.getElementById('overlay');
-        if (card.classList.contains('expanded')) {
-            card.classList.remove('expanded');
-            overlay.classList.remove('active');
-        } else {
-            document.querySelectorAll('.cloud-card').forEach(c => c.classList.remove('expanded'));
-            card.classList.add('expanded');
-            overlay.classList.add('active');
-        }
-    }
-    document.getElementById('overlay').addEventListener('click', function() {
-        document.querySelectorAll('.cloud-card').forEach(c => c.classList.remove('expanded'));
-        this.classList.remove('active');
-    });
-</script>
+<footer>
+    © 2026 Yahan Liu. All Rights Reserved.
+</footer>
 
 </body>
 </html>
