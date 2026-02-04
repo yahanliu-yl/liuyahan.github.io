@@ -7,7 +7,6 @@
     <link rel="icon" href="icon.png" type="image/png">
     <title>YAHAN LIU | IDEAS</title>
 </head>
-
 <body style="background-image: url('ideas.jpg'); background-size: cover; background-position: center; background-attachment: fixed;">
 
 <div id="overlay"></div>
@@ -15,7 +14,7 @@
 <nav>
     <a href="index.html">HOME</a>
     <a href="works.html">WORKS</a>
-    <a href="ideas.html" class="active">IDEAS</a>
+    <a href="ideas.html" class="active">IDEAS</a> 
     <a href="others.html">OTHERS</a>
 </nav>
 
@@ -49,7 +48,7 @@
         <div class="cloud-content" style="font-size: 0.7rem;">Just keep swimming...</div>
     </div>
 
-    <div class="cloud-card" style="top: 25%; left: 45%; width: 350px; min-height: 200px; transform: rotate(-2deg);" onclick="toggleExpand(this)">
+    <div class="cloud-card" style="top: 25%; left: 45%; width: 350px; min-height: 200px; transform: rotate(-2deg); z-index: 10;" onclick="toggleExpand(this)">
         <div class="cloud-title">📓 Dear Diary...</div>
         <div class="cloud-content" style="line-height: 1.8;">
             <p><strong>Feb 04, 2026</strong></p>
@@ -93,17 +92,19 @@
 <script>
     function toggleExpand(card) {
         const overlay = document.getElementById('overlay');
-        
+        // 如果已经打开了，就关闭
         if (card.classList.contains('expanded')) {
             card.classList.remove('expanded');
             overlay.classList.remove('active');
         } else {
+            // 关闭其他的
             document.querySelectorAll('.cloud-card').forEach(c => c.classList.remove('expanded'));
+            // 打开这个
             card.classList.add('expanded');
             overlay.classList.add('active');
         }
     }
-
+    // 点背景关闭
     document.getElementById('overlay').addEventListener('click', function() {
         document.querySelectorAll('.cloud-card').forEach(c => c.classList.remove('expanded'));
         this.classList.remove('active');
