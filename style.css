@@ -1,9 +1,9 @@
-/* --- 全局样式设定 --- */
+/* --- 1. 全局与背景 --- */
 :root {
-    --bg-overlay: rgba(240, 240, 240, 0.9);
-    --text-color: #333333;
-    --border-color: #888888;
-    --accent-color: #000000;
+    --bg-overlay: rgba(255, 255, 255, 0.6); /* 整体稍微调亮一点，配合低饱和 */
+    --text-main: #333;
+    --text-dim: #666;
+    --border-color: #888;
 }
 
 body {
@@ -11,66 +11,136 @@ body {
     background-size: cover;
     background-position: center;
     background-attachment: fixed;
-    color: var(--text-color);
+    color: var(--text-main);
     font-family: 'Courier New', Courier, monospace;
     margin: 0;
     padding: 20px;
+    overflow-x: hidden; /* 防止云朵飘出屏幕产生横向滚动条 */
+    
+    /* 页面加载时的渐入动画 */
+    animation: pageFadeIn 1s ease-out;
 }
 
-/* --- 导航栏 (新加的！) --- */
+/* --- 2. 定义动画 (Magic Happens Here) --- */
+@keyframes pageFadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes float {
+    0% { transform: translateY(0px); }
+    50% { transform: translateY(-10px); } /* 向上漂浮 */
+    100% { transform: translateY(0px); }
+}
+
+/* --- 3. 导航栏 (保持不变，但加了透明度变化) --- */
 nav {
     display: flex;
-    gap: 10px;
-    margin-bottom: -2px; /* 让导航栏和下方的窗口无缝连接 */
-    padding-left: 10px;
+    gap: 15px;
+    margin-bottom: 30px;
+    position: relative;
+    z-index: 100; /* 保证导航栏永远在最上面 */
 }
 
 nav a {
     text-decoration: none;
-    color: #666;
-    background: #dcdcdc;
+    color: #555;
+    background: rgba(255, 255, 255, 0.4); /* 半透明背景 */
+    backdrop-filter: blur(5px); /* 磨砂玻璃效果 */
     padding: 8px 20px;
-    border: 2px solid var(--border-color);
-    border-bottom: none;
+    border: 1px solid #999;
+    border-radius: 20px; /* 变成圆润的胶囊形状，呼应云朵 */
     font-size: 0.8rem;
     font-weight: bold;
+    transition: all 0.4s ease;
 }
 
 nav a:hover, nav a.active {
-    background: #fff;
+    background: rgba(255, 255, 255, 0.9);
     color: #000;
-    margin-top: -2px; /* 悬停时微微跳起的效果 */
+    transform: scale(1.05); /* 鼠标放上去微微变大 */
+    box-shadow: 0 0 15px rgba(255, 255, 255, 0.8);
 }
 
-/* --- 页面窗口容器 --- */
+/* --- 4. 首页 (Container) 的样式保留 --- */
+/* 这是为了保证 index.html 不坏掉 */
 .container {
     max-width: 900px;
     margin: 0 auto 40px;
     border: 2px solid var(--border-color);
-    background: var(--bg-overlay);
+    background: rgba(240, 240, 240, 0.9);
     box-shadow: 8px 8px 0px rgba(0,0,0,0.25);
 }
-
-header {
-    border-bottom: 2px solid var(--border-color);
-    padding: 20px;
-    display: flex;
-    justify-content: space-between;
-    background: #e8e8e8;
-}
-
-/* 之前作品集的网格样式 */
+header { border-bottom: 2px solid var(--border-color); padding: 20px; display: flex; justify-content: space-between; background: #e8e8e8; }
 .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); }
-.item { border-right: 1px solid var(--border-color); border-bottom: 1px solid var(--border-color); padding: 15px; }
-.img-wrapper { width: 100%; height: 250px; overflow: hidden; border: 1px solid #999; background: #000; }
-.img-wrapper img { width: 100%; height: 100%; object-fit: cover; filter: grayscale(30%); transition: 0.3s; }
-.img-wrapper img:hover { filter: grayscale(0%); transform: scale(1.05); }
+.item { border-right: 1px solid var(--border-color); border-bottom: 1px solid var(--border-color); padding: 15px; display: flex; flex-direction: column; transition: 0.3s; }
+.item:hover { background: #fff; }
+.img-wrapper { width: 100%; height: 250px; overflow: hidden; border: 1px solid #999; background: #000; margin-bottom: 10px; }
+.item img { width: 100%; height: 100%; object-fit: cover; filter: grayscale(30%); transition: 0.3s; }
+.item:hover img { filter: grayscale(0%); transform: scale(1.05); }
+.meta { margin-top: auto; font-size: 0.75rem; display: flex; justify-content: space-between; font-weight: bold; color: #555; }
+.ticker-wrap { background: #000; color: #fff; padding: 5px 0; font-size: 0.8rem; white-space: nowrap; overflow: hidden; border-bottom: 2px solid #888;}
+.ticker { display: inline-block; animation: ticker 15s infinite linear; padding-left: 100%; }
+@keyframes ticker { 0% { transform: translate3d(0, 0, 0); } 100% { transform: translate3d(-100%, 0, 0); } }
+.bio-box { font-size: 0.8rem; border: 1px solid #888; padding: 8px; background: #fff; }
+footer { padding: 30px; text-align: center; font-size: 0.8rem; color: #666; border-top: 2px solid #888; background: #e8e8e8; }
 
-/* --- 灵感页专用的文字框 --- */
-.idea-card {
-    padding: 20px;
-    border-bottom: 1px dotted #999;
-    background: rgba(255,255,255,0.5);
+
+/* --- 5. IDEAS 页面专用：云朵与漂浮 (NEW!) --- */
+
+/* 一个看不见的画布容器 */
+.sky-container {
+    max-width: 1000px;
+    margin: 0 auto;
+    position: relative; /* 为了让里面的云朵可以绝对定位 */
+    height: 1200px; /* 设定一个高度让云朵有地方飘 */
+    padding-top: 50px;
 }
 
-footer { padding: 30px; text-align: center; font-size: 0.8rem; border-top: 2px solid var(--border-color); background: #e8e8e8; }
+/* 云朵卡片的共同特征 */
+.cloud-card {
+    position: absolute; /* 绝对定位：打破网格，随意摆放 */
+    background: rgba(255, 255, 255, 0.3); /* 极低透明度：平时几乎看不见 */
+    backdrop-filter: blur(4px); /* 磨砂感 */
+    padding: 25px;
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    color: #444;
+    width: 200px; /* 默认宽度 */
+    
+    /* 变成不规则的云朵形状 */
+    border-radius: 40% 60% 70% 30% / 40% 50% 60% 50%; 
+    
+    /* 动画与过渡 */
+    animation: float 6s ease-in-out infinite; /* 上下漂浮动画 */
+    transition: all 0.5s ease; /* 鼠标放上去时的平滑过渡 */
+    cursor: help; /* 鼠标变成问号，增加趣味 */
+}
+
+/* 鼠标悬停交互：变清晰、变大、变亮 */
+.cloud-card:hover {
+    background: rgba(255, 255, 255, 0.95); /* 几乎不透明 */
+    border: 1px solid #000;
+    z-index: 10; /* 浮到最上层 */
+    transform: scale(1.1); /* 放大 */
+    opacity: 1;
+    color: #000;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.1); /* 柔和的阴影 */
+}
+
+.cloud-title {
+    font-weight: bold;
+    border-bottom: 1px dotted #666;
+    margin-bottom: 8px;
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.cloud-content {
+    font-size: 0.8rem;
+    line-height: 1.6;
+}
+
+/* 针对不同云朵的微调 (大小、形状) */
+.cloud-lg { width: 300px; height: 180px; border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%; }
+.cloud-sm { width: 160px; border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%; animation-duration: 4s; } /* 飘得快一点 */
