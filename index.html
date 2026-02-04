@@ -3,106 +3,50 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css">
     <link rel="icon" href="icon.png" type="image/png">
-    <title>YAHAN LIU | WORKS</title>
+    <title>YAHAN LIU</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            /* 背景色设为淡粉色，这样如果屏幕比图片大，留白处会和图片融合 */
+            background-color: #ffeef7; 
+            height: 100vh;
+            width: 100vw;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden; /* 禁止滚动，保持海报感 */
+        }
+
+        .splash-container {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        /* 图片样式：完美适应屏幕，不裁剪 */
+        .splash-img {
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: contain; /* 保证整张图能完整显示 */
+            cursor: pointer; /* 鼠标放上去会变成小手 */
+            transition: transform 0.3s ease;
+        }
+
+        /* 鼠标悬停时微微放大一点点，提示可以点击 */
+        .splash-img:hover {
+            transform: scale(1.02);
+        }
+    </style>
 </head>
 <body>
 
-<nav>
-    <a href="index.html" class="active">HOME/WORKS</a>
-    <a href="ideas.html">IDEAS</a>
-    <a href="others.html">OTHERS</a>
-</nav>
-
-<div class="container">
-    <header>
-        <div>
-            <h1>Yahan Liu</h1>
-            <p style="margin-top:5px; font-size:0.9rem;">/// VISUAL ARTIST ///</p>
-        </div>
-        <div class="bio-box">
-            BORN: 2006, BJ<br>
-            BASE: ANN ARBOR<br>
-            STATUS: ONLINE
-        </div>
-    </header>
-
-    <div class="ticker-wrap">
-        <div class="ticker">
-            *** WELCOME TO THE ARCHIVE *** YAHAN LIU *** VISUAL ARTS / MIXED MEDIA *** SCROLL TO VIEW ***
-        </div>
-    </div>
-
-    <div class="grid">
-        <div class="item">
-            <div class="img-wrapper">
-                <img src="Photo1.JPG" alt="Body Series">
-            </div>
-            <div class="meta">
-                <span>01. HEALING PROCESS</span>
-                <span>PHOTO</span>
-            </div>
-        </div>
-
-        <div class="item">
-            <div class="img-wrapper">
-                <img src="photo2.JPG" alt="Portrait">
-            </div>
-            <div class="meta">
-                <span>02. IDENTITY PLAY</span>
-                <span>PERFORMANCE</span>
-            </div>
-        </div>
-
-        <div class="item">
-            <div class="img-wrapper">
-                <img src="photo_3.JPG" alt="Sculpture">
-            </div>
-            <div class="meta">
-                <span>03. ORGANIC FORM</span>
-                <span>INSTALLATION</span>
-            </div>
-        </div>
-
-        <div class="item">
-            <div class="img-wrapper">
-                <img src="photo_4.jpg" alt="Fabric Art">
-            </div>
-            <div class="meta">
-                <span>04. DISTORTION</span>
-                <span>DIGITAL</span>
-            </div>
-        </div>
-
-        <div class="item">
-            <div class="img-wrapper">
-                <img src="Photo_5.jpg" alt="Glitch Lace">
-            </div>
-            <div class="meta">
-                <span>05. TEXTURE GLITCH</span>
-                <span>MIXED</span>
-            </div>
-        </div>
-
-        <div class="item">
-            <div class="img-wrapper">
-                <img src="photo_6.jpg" alt="Collage">
-            </div>
-            <div class="meta">
-                <span>06. FUTURE OF HUMAN?</span>
-                <span>COLLAGE</span>
-            </div>
-        </div>
-    </div>
-
-    <footer>
-        <p>CONTACT: YAHANLIU [AT] UMICH.EDU</p>
-        <p>© 2026 YAHAN LIU. ALL RIGHTS RESERVED.</p>
-        <br>
-        <a href="#">INSTAGRAM</a>
-    </footer>
-</div>
+    <a href="works.html" class="splash-container">
+        <img src="splash.jpg" alt="Enter Yahan Liu Archive" class="splash-img">
+    </a>
 
 </body>
 </html>
